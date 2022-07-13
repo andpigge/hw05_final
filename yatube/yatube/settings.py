@@ -39,6 +39,8 @@ ALLOWED_HOSTS = [
     'testserver'
 ]
 
+CSRF_FAILURE_VIEW = 'core.error_pages.views.csrf_failure'
+
 
 # Application definition
 
