@@ -19,6 +19,7 @@ def server_error(request):
         status=HTTPStatus.INTERNAL_SERVER_ERROR
     )
 
+
 def csrf_failure(request, reason=''):
     return render(
         request,
