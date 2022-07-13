@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  Войти
+{% endblock %}
+
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8 p-5">
+    <article class='mb-3'
+      style="
+        border: 1px solid #F5F5F5; 
+        border-radius: 5px; padding: 40px
+      "
+    >
+
+      <h1 style="color: #121212" class="fs-4">
+        Войти на сайт
+      </h1>
+      
+      <div>
+        {% include 'includes/form/form_error.html' %}
+
+        <form method="post" action="{% url 'users:login' %}">
+          {% csrf_token %}
+          {% for field in form %}
+            <div class="form-group row my-3 p-3">
+              {% include 'includes/form/form_field.html' %}
+            </div>
+          {% endfor %}
+
+          <div class="col-md-6 offset-md-4">
+            <button type="submit" class="btn btn-primary">
+              Войти
+            </button>
+
+            <a href="{% url 'users:change' %}" class="btn btn-link">
+              Забыли пароль?
+            </a>
+          </div>
+        </form>
+      </div>
+    </article>
+  </div> 
+  <!-- col -->
+</div> 
+<!-- row -->
+{% endblock %} 

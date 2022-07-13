@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Записи сообщества {{ group.title }}
+{% endblock %} 
+
+
+{% block content %}
+  <h1>
+    {{ group.title }}
+  </h1>
+
+  <p>
+    {{ group.description }}
+  </p>
+  {% for post in page_obj %}
+    <article class='mb-3'
+      style="
+        border: 1px solid #F5F5F5;
+        border-radius: 5px; padding: 40px
+      "
+    >
+      {% include 'includes/posts.html' %}
+
+      {% include 'includes/buttons/detail_link.html' %}
+    </article>
+  {% empty %}
+    <p>В этой категории нет записей.</p>
+  {% endfor %}
+
+  {% include 'includes/paginator.html' %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load cache %}
+
+
+{% block title %}
+  Это главная страница проекта Yatube
+{% endblock %}
+
+
+{% block content %}
+{% cache 20 index page_obj.number %}
+<h1 style="color: #121212" class="fs-2 mb-5">
+  Последние обновления на сайте
+</h1>
+
+{% include 'includes/switcher.html' %}
+
+{% for post in page_obj %}
+  <article class='mb-3'
+    style="
+      border: 1px solid #F5F5F5;
+      border-radius: 5px; padding: 40px
+    "
+  >
+    {% include 'includes/posts.html' %}
+
+    <div class="row mt-5">
+        {% include 'includes/buttons/detail_link.html' %}
+
+        {% if post.group %}
+          {% include 'includes/buttons/group_link.html' %}
+        {% endif %}
+
+        {% if post.author == author %}
+          {% include 'includes/buttons/delete_link.html' %}
+        {% endif %}
+    </div>
+  </article>
+{% empty %}
+  <p>Пока нет записей.</p>
+{% endfor %}
+
+{% include 'includes/paginator.html' %}
+{% endcache %}
+{% endblock %}

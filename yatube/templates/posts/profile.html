@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+  Профайл пользователя {{ author.get_full_name }}
+{% endblock %}
+
+
+{% block content %}
+<h1 style="color: #121212" class="fs-2 mb-3">
+  Все посты пользователя {{ author }}
+</h1>
+
+<h3 style="color: #ffc107" class="fs-4 mb-5">
+  Всего постов: {{ post_count }}
+</h3>
+
+{% if user.is_authenticated and not is_author %}
+{% if following %}
+  <a
+    class="btn btn-lg btn-light"
+    href="{% url 'posts:profile_unfollow' author.username %}" role="button"
+  >
+    Отписаться
+  </a>
+{% else %}
+  <a
+    class="btn btn-lg btn-primary"
+    href="{% url 'posts:profile_follow' author.username %}" role="button"
+  >
+    Подписаться
+  </a>
+{% endif %}
+{% endif %}
+
+{% for post in page_obj %}
+  <article class='mb-3'
+    style="
+      border: 1px solid #F5F5F5; 
+      border-radius: 5px; padding: 40px
+    "
+  >
+    {% include 'includes/posts.html' %}
+
+    <div class="row mt-5">
+      {% include 'includes/buttons/detail_link.html' %}
+
+      {% if post.group %}
+        {% include 'includes/buttons/group_link.html' %}
+      {% endif %}
+    </div>
+  </article>
+{% empty %}
+  <p>В этой категории нет записей.</p>
+{% endfor %}
+
+{% include 'includes/paginator.html' %}
+{% endblock %}

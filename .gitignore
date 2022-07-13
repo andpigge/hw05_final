@@ -26,6 +26,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+static
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -145,8 +146,4 @@ dmypy.json
 
 .mypy_cache
 
-# папки со статикой и медиа
-static/
-yatube/posts/static/
-yatube/media/
-
+media

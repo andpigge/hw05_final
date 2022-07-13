@@ -1,0 +1,105 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'posts:index' %}">
+      <img
+        src="{% static 'img/logo.png' %}"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt="Логотип"
+      />
+      <span style="color: red">Ya</span><span style="color: #121212">tube</span>
+    </a>
+
+    <button class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="offcanvas" 
+      data-bs-target="#offcanvasNavbar" 
+      aria-controls="offcanvasNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+          {{ user.email }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрывать"></button>
+      </div>
+
+      {% with request.resolver_match.view_name as current_url %}
+      <div class="offcanvas-body">
+
+        <ul class="navbar-nav nav-pills justify-content-end flex-grow-1 pe-3">
+
+
+          <li class="nav-item"> 
+            <a class="nav-link {% if current_url == 'about:author' %}active{% endif %}"
+              href="{% url 'about:author' %}"
+            >
+              Об авторе
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link {% if current_url == 'about:tech' %}active{% endif %}"
+              href="{% url 'about:tech' %}"
+            >
+              Технологии
+            </a>
+          </li>
+
+          {% if user.is_authenticated %}
+          <li class="nav-item"> 
+            <a class="nav-link {% if current_url == 'posts:post_create' %}active{% endif %}"
+              href="{% url 'posts:post_create' %}"
+            >
+              Новая запись
+            </a>
+          </li>
+
+          <li class="nav-item nav-link text-success">
+            Пользователь: {{ user.username }}
+          </li>
+
+          <li class="nav-item"> 
+            <a class="nav-link link-dark {% if current_url == 'users:change' %}active{% endif %}"
+              href="{% url 'users:change' %}"
+            >
+              Изменить пароль
+            </a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link link-dark {% if current_url == 'users:logout' %}active{% endif %}" 
+              href="{% url 'users:logout' %}"
+            >
+              Выйти
+            </a>
+          </li>
+          {% else %}
+          <li class="nav-item"> 
+            <a class="nav-link link-dark {% if current_url == 'users:login' %}active{% endif %}" 
+              href="{% url 'users:login' %}"
+            >
+              Войти
+            </a>
+          </li>
+          <li class="nav-item"> 
+            <a class="nav-link link-dark {% if current_url == 'users:signup' %}active{% endif %}" 
+              href="{% url 'users:signup' %}"
+            >
+              Регистрация
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endwith %} 
+    </div>
+  </div>
+</nav>

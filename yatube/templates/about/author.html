@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+  Об авторе проекта
+{% endblock %}
+
+
+{% block content %}
+<h1 style="color: #121212" class="fs-2 mb-3">
+  Привет, меня зовут Рустам.
+</h1>
+
+<p class="fs-5" style="color: #121212">
+  В свободное время поработаю с 
+  <span style="color: #ffc107" class="fw-bolder">
+    bootstrap 5
+  </span>
+  |
+  <span style="color: #ffc107" class="fw-bolder">
+    bootstrap UI
+  </span>
+  |
+  <span style="color: #ffc107" class="fw-bolder">
+    jQuery
+  </span>
+</p>
+
+<a href="{% url 'about:tech' %}"
+    class="
+      btn 
+      btn-outline-primary
+      w-25
+      mt-5 
+      btn-lg"
+  >
+    Технологии
+  </a>
+{% endblock %}
