@@ -190,8 +190,10 @@ class TestingViewsInPosts(TestCase):
         )
 
     def test_correct_show_context_is_author_if_user_authorized(self):
-        """ Проверка корректности контекста author,
-            если пользователь автор поста. """
+        """ 
+        Проверка корректности контекста author,
+        если пользователь автор поста.
+        """
 
         # Пользователь автор поста
         response_author = self.authorized_client.get(self.urls['post_detail'])
@@ -202,8 +204,10 @@ class TestingViewsInPosts(TestCase):
         )
 
     def test_correct_show_context_is_author_if_user_not_authorized(self):
-        """ Проверка корректности контекста author,
-            если пользователь не автор поста. """
+        """
+        Проверка корректности контекста author,
+        если пользователь не автор поста.
+        """
 
         # Пользователь не автор поста
         response_other = self.authorized_client_other.get(
@@ -300,8 +304,10 @@ class TestingViewsInPosts(TestCase):
                 )
 
     def test_check_missing_new_group_on_pages_posts(self):
-        """ Проверить отсуствие созданной группы в постах,
-            если ее никто не выбрал. """
+        """
+        Проверить отсуствие созданной группы в постах,
+        если ее никто не выбрал.
+        """
         new_group = Group.objects.create(
             title='Лидеры',
             slug='category-leader',

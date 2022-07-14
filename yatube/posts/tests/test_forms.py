@@ -127,8 +127,10 @@ class TaskCreateFormTests(TestCase):
         )
 
     def test_check_form_page_edit_user(self):
-        """ Проверка успешного редактирования поста,
-            после успешной валидации. """
+        """
+        Проверка успешного редактирования поста,
+        после успешной валидации.
+        """
         group_loser = Group.objects.create(
             title='Лузеры',
             slug='category-loser',
@@ -171,8 +173,10 @@ class TaskCreateFormTests(TestCase):
         )
 
     def test_check_form_page_creation_comment(self):
-        """ Проверка успешного создания комментария,
-            после успешной валидации. """
+        """
+        Проверка успешного создания комментария,
+        после успешной валидации.
+        """
         comment_count = Comment.objects.count()
 
         form_data = {

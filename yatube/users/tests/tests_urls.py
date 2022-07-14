@@ -40,8 +40,10 @@ class TestingUrlsInPosts(TestCase):
         self.authorized_client.force_login(TestingUrlsInPosts.user)
 
     def test_check_status_code_for_not_authorized_user(self):
-        """ Проверка доступности публичных адресов,
-            неавторизированным пользователям. """
+        """
+        Проверка доступности публичных адресов,
+        неавторизированным пользователям.
+        """
         for url in self.urls_public:
             with self.subTest(url=url):
                 self.assertEqual(
@@ -65,8 +67,10 @@ class TestingUrlsInPosts(TestCase):
                 )
 
     def test_check_status_code_for_authorized_user(self):
-        """ Проверка доступности приватных адресов,
-            авторизированным пользователям. """
+        """
+        Проверка доступности приватных адресов,
+        авторизированным пользователям.
+        """
         for url in self.urls_private:
             with self.subTest(url=url):
                 self.assertEqual(

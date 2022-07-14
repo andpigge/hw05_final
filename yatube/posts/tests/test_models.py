@@ -129,8 +129,10 @@ class PostModelTest(TestCase):
         self.assertEqual(group_junior.slug, 'category-')
 
     def test_correct_object_name(self):
-        """ Проверка на корректность возвращаемого
-            значения методом __str__. """
+        """
+        Проверка на корректность возвращаемого
+        значения методом __str__.
+        """
         group = PostModelTest.group
 
         post = PostModelTest.post

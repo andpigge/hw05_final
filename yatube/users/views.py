@@ -29,8 +29,10 @@ class PasswordReset(PasswordResetView):
 
 
 class PasswordResetComplete(PasswordResetCompleteView):
-    """ Подтверждения отправки письма на почту,
-        может видеть только зарегистрированный пользователь. """
+    """
+    Подтверждения отправки письма на почту,
+    может видеть только зарегистрированный пользователь.
+    """
     template_name = 'users/password_reset_done.html'
 
     @method_decorator(login_required)
