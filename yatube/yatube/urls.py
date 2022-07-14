@@ -32,7 +32,7 @@ handler404 = 'core.error_pages.views.page_not_found'
 
 handler500 = 'core.error_pages.views.server_error'
 
-handler403 = 'core.views.permission_denied'
+handler403 = 'core.error_pages.views.permission_denied'
 
 # В режиме разработки загружать статические картинки
 if settings.DEBUG:
