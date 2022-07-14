@@ -8,7 +8,7 @@ from .forms import PostForm, CommentForm
 
 AMOUNT_POSTS_ON_ONE_PAGE = 10
 
-def getPagination(request, posts, amount):
+def get_pagination(request, posts, amount):
     paginator = Paginator(posts, amount)
 
     page_number = request.GET.get('page')
@@ -21,7 +21,7 @@ def index(request):
 
     posts = Post.objects.select_related('group').all()
 
-    page_obj = getPagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
+    page_obj = get_pagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
 
     context = {
         'author': author,
@@ -36,7 +36,7 @@ def group_posts(request, slug):
 
     posts = group.posts.all()
 
-    page_obj = getPagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
+    page_obj = get_pagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
 
     context = {
         'group': group,
@@ -52,7 +52,7 @@ def profile(request, username):
 
     posts = author.posts.all()
 
-    page_obj = getPagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
+    page_obj = get_pagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
 
     following = User.objects.filter(following__author=author).exists()
 
@@ -202,7 +202,7 @@ def follow_index(request):
     # В постах, у автора, узнаем на что он подписан
     posts = Post.objects.filter(author__following__user=request.user)
 
-    page_obj = getPagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
+    page_obj = get_pagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
 
     authors = User.objects.filter(following__user=request.user)
 
@@ -219,7 +219,7 @@ def follow_author(request, username):
     """ Перейти на посты автора. """
     posts = Post.objects.filter(author__following__author__username=username)
 
-    page_obj = getPagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
+    page_obj = get_pagination(request, posts, AMOUNT_POSTS_ON_ONE_PAGE)
 
     authors = User.objects.filter(following__user=request.user)
 
