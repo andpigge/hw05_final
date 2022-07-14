@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load cache %}
 {% load thumbnail %}
 
 
@@ -9,12 +8,14 @@
 
 
 {% block content %}
-<h1 style="color: #121212" class="fs-2 mb-5">
-  Все посты
+<div class="information-text information-text_margin_bottom">
+  <h1 class="information-text__title">
+    Все посты
   {% if username %}
     автора {{ username }}
   {% endif %}
-</h1>
+  </h1>
+</div>
 
 {% include 'includes/switcher.html' %}
 

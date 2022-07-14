@@ -7,54 +7,54 @@
 
 
 {% block content %}
-<div class="row">
-  <h1 style="color: #121212" class="fs-2 mb-5">
+<div class="information-text information-text_margin_bottom">
+  <h1 class="information-text__title">
     Вот что я умею
   </h1>
-  
-  <aside class="col-12 col-md-3 me-5">
-    <ul class="list-group list-group-flush">
-      <li class="fs-5 fw-bolder"
-        style="color: #ffc107"
-      >
-        Python
-      </li>
-      <li class="fs-5 fw-bolder"
-        style="color: #ffc107"
-      >
-        Django framework
-      </li>
-      <li class="fs-5 fw-bolder"
-        style="color: #ffc107"
-      >
-        Git
-      </li>
-      <li class="fs-5 fw-bolder"
-        style="color: #ffc107"
-      >
-        SQL / SQLite
-      </li>
-    </ul>
-  </aside>
-
-  <article class="col-12 col-md-8">
-    <p class="fs-5" 
-      style="color: #121212"
-    >
-      Применяю полученные знания на практике.
-    </p>
-  </article>
-
-  <a href="{% url 'about:author' %}" 
-    class="
-      btn 
-      btn-outline-primary
-      w-25 
-      mx-auto 
-      mt-5 
-      btn-lg"
-  >
-    Автор
-  </a>
 </div>
+
+<aside class="col-12 col-md-3 me-5">
+  <ul class="list-group list-group-flush">
+    <li class="fs-5 fw-bolder"
+      style="color: #ffc107"
+    >
+      Python
+    </li>
+    <li class="fs-5 fw-bolder"
+      style="color: #ffc107"
+    >
+      Django framework
+    </li>
+    <li class="fs-5 fw-bolder"
+      style="color: #ffc107"
+    >
+      Git
+    </li>
+    <li class="fs-5 fw-bolder"
+      style="color: #ffc107"
+    >
+      SQL / SQLite
+    </li>
+  </ul>
+</aside>
+
+<article class="col-12 col-md-8">
+  <p class="fs-5" 
+    style="color: #121212"
+  >
+    Применяю полученные знания на практике.
+  </p>
+</article>
+
+<a href="{% url 'about:author' %}" 
+  class="
+    btn 
+    btn-outline-primary
+    w-25 
+    mx-auto 
+    mt-5 
+    btn-lg"
+>
+  Автор
+</a>
 {% endblock %} 

@@ -7,27 +7,30 @@
 
 
 {% block content %}
-  <h1>
+<div class="information-text information-text_margin_bottom">
+  <h1 class="information-text__title">
     {{ group.title }}
   </h1>
 
-  <p>
+  <p class="information-text__description">
     {{ group.description }}
   </p>
-  {% for post in page_obj %}
-    <article class='mb-3'
-      style="
-        border: 1px solid #F5F5F5;
-        border-radius: 5px; padding: 40px
-      "
-    >
-      {% include 'includes/posts.html' %}
+</div>
 
-      {% include 'includes/buttons/detail_link.html' %}
-    </article>
-  {% empty %}
-    <p>В этой категории нет записей.</p>
-  {% endfor %}
+{% for post in page_obj %}
+  <article class='mb-3'
+    style="
+      border: 1px solid #F5F5F5;
+      border-radius: 5px; padding: 40px
+    "
+  >
+    {% include 'includes/posts.html' %}
 
-  {% include 'includes/paginator.html' %}
+    {% include 'includes/buttons/detail_link.html' %}
+  </article>
+{% empty %}
+  <p>В этой категории нет записей.</p>
+{% endfor %}
+
+{% include 'includes/paginator.html' %}
 {% endblock %}

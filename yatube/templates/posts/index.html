@@ -9,9 +9,11 @@
 
 {% block content %}
 {% cache 20 index page_obj.number %}
-<h1 style="color: #121212" class="fs-2 mb-5">
-  Последние обновления на сайте
-</h1>
+<div class="information-text information-text_margin_bottom">
+  <h1 class="information-text__title">
+    Последние обновления на сайте
+  </h1>
+</div>
 
 {% include 'includes/switcher.html' %}
 
