@@ -17,30 +17,32 @@
 
 {% include 'includes/switcher.html' %}
 
-{% for post in page_obj %}
-  <article class='mb-3'
-    style="
-      border: 1px solid #F5F5F5;
-      border-radius: 5px; padding: 40px
-    "
-  >
-    {% include 'includes/posts.html' %}
+<div class="posts">
+  <ul class="posts__list">
+    {% for post in page_obj %}
+      <li class="posts__item">
+        <article class="card-post">
 
-    <div class="row mt-5">
-        {% include 'includes/buttons/detail_link.html' %}
+          {% include 'includes/posts.html' %}
 
-        {% if post.group %}
-          {% include 'includes/buttons/group_link.html' %}
-        {% endif %}
+          <div class="row mt-5">
+            {% include 'includes/buttons/detail_link.html' %}
 
-        {% if post.author == author %}
-          {% include 'includes/buttons/delete_link.html' %}
-        {% endif %}
-    </div>
-  </article>
-{% empty %}
-  <p>Пока нет записей.</p>
-{% endfor %}
+            {% if post.group %}
+              {% include 'includes/buttons/group_link.html' %}
+            {% endif %}
+
+            {% if post.author == author %}
+              {% include 'includes/buttons/delete_link.html' %}
+            {% endif %}
+          </div>
+        </article>
+      </li>
+    {% empty %}
+      <p>Пока нет записей.</p>
+    {% endfor %}
+  </ul>
+</div>
 
 {% include 'includes/paginator.html' %}
 {% endcache %}
