@@ -8,6 +8,7 @@ from .forms import PostForm, CommentForm
 
 AMOUNT_POSTS_ON_ONE_PAGE = 10
 
+
 def get_pagination(request, posts, amount):
     paginator = Paginator(posts, amount)
 

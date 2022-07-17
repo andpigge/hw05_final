@@ -120,8 +120,8 @@ class TestingViews(TestCase):
         )
 
     def test_check_follow(self):
-        """ 
-        Новая запись пользователя появляется в ленте тех, 
+        """
+        Новая запись пользователя появляется в ленте тех,
         кто на него подписан и не появляется в ленте тех, кто не подписан.
         """
 
@@ -150,7 +150,9 @@ class TestingViews(TestCase):
             author=new_post_follow.author,
         )
 
-        response = self.authorized_client.get(TestingViews.urls['follow_index'])
+        response = self.authorized_client.get(
+            TestingViews.urls['follow_index']
+        )
 
         # Автор, не может подписаться сам на себя
         if not follow.user == follow.author:
@@ -249,7 +251,9 @@ class TestingViewsCheckContext(TestingViews):
     def test_correct_show_context_is_edits(self):
         """ Проверка корректности контекста is_edit. """
 
-        for url, value in self.urls_and_values_for_check_is_edit_context.items():
+        for url, value in (
+            self.urls_and_values_for_check_is_edit_context.items()
+        ):
             response = self.authorized_client.get(url)
 
             with self.subTest(url=url):
@@ -268,7 +272,7 @@ class TestingViewsCheckContext(TestingViews):
         )
 
     def test_correct_show_context_is_author_if_user_authorized(self):
-        """ 
+        """
         Проверка корректности контекста author,
         если пользователь автор поста.
         """
