@@ -119,6 +119,51 @@ class TestingViews(TestCase):
             response.context.get('page_obj').object_list
         )
 
+    def test_check_follow(self):
+        """ 
+        Новая запись пользователя появляется в ленте тех, 
+        кто на него подписан и не появляется в ленте тех, кто не подписан.
+        """
+
+        old_follow = Follow.objects.all()
+        old_follow.delete()
+
+        new_user = User.objects.create(
+            username='andpigge1',
+        )
+
+        # Создать пользователя. Автор поста.
+        new_post_follow = Post.objects.create(
+            text='Тестирование появления в ленте автора. Первый пост.',
+            author=new_user,
+            group=TestingViews.group
+        )
+
+        new_post_not_follow = Post.objects.create(
+            text='Тестирование появления в ленте автора. Второй пост.',
+            author=TestingViews.user,
+            group=TestingViews.group
+        )
+
+        follow = Follow.objects.create(
+            user=TestingViews.user,
+            author=new_post_follow.author,
+        )
+
+        response = self.authorized_client.get(TestingViews.urls['follow_index'])
+
+        # Автор, не может подписаться сам на себя
+        if not follow.user == follow.author:
+            self.assertIn(
+                new_post_follow,
+                response.context.get('page_obj').object_list
+            )
+
+        self.assertNotIn(
+            new_post_not_follow,
+            response.context.get('page_obj').object_list
+        )
+
 
 class TestingViewsCheckTemplate(TestingViews):
     @classmethod
